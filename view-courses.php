@@ -3,14 +3,13 @@
 	<div>
 		<a href="?m=add-course" class="btn btn-primary my-2">Add new course</a>
 	</div>
-	<table class="table table-responsive w-100">
+	<table class="table table-hover table-striped w-100">
 		<thead>
 			<tr>
 				<th></th>
 				<th>Course ID</th>
 				<th>Subject</th>
 				<th>Level</th>
-				<th>Fee</th>
 				<th>Tutor</th>
 				<th>Actions</th>
 			</tr>
@@ -25,7 +24,6 @@
 					<td>CRS<?php echo 1000+$row['id'] ?></td>
 					<td><?php echo $row['subject'] ?></td>
 					<td><?php echo $row['level'] ?></td>
-					<td><?php echo $row['fee'] ?></td>
 					<td><?php echo $row['tutor'] ?></td></td>
 					<td>
 						<div class="btn-group">

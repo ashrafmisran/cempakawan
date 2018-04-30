@@ -9,35 +9,38 @@
       <li class="nav-item active">
         <a class="nav-link" href="?m=">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=student-registration">Registration</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Students Management</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="?m=student-registration">Registration</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="?m=class-management">Class Management</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=courses">Courses</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="?m=courses">Courses</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="?m=parent">Parents</a>
+          <a class="dropdown-item" href="?m=tutors">Tutors</a>
+          <a class="dropdown-item" href="?m=staffs">Staffs</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="?m=payment">Payment</a>
+          <a class="dropdown-item" href="?m=financial">Financial Statement</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="controller-backup.php">Backup Database</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=enrollment">Enrollment</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=books">Books</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=parent">Parents</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=tutors">Tutors</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=staffs">Staffs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=financial">Financial</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="controller-logout.php">Log Out</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="?m=locked-user">Lock</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="?m=user-profile">Profile</a>
+          <a class="dropdown-item" href="?m=change-password">Change Password</a>
+          <a class="dropdown-item" href="?m=locked-user">Lock</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="controller-logout.php">Logout</a>
+        </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

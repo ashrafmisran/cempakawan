@@ -1,7 +1,7 @@
 <main class="m-2">
-	<h2>Students Registration</h2>
+	<h2>Class Management</h2>
 	<div>
-		<a href="?m=add-student" class="btn btn-primary my-2">Add new student</a>
+		<a href="?m=add-student" class="btn btn-primary my-2">Enroll student</a>
 	</div>
 	<table class="table table-hover table-striped w-100">
 		<thead>
