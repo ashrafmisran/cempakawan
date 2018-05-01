@@ -14,22 +14,42 @@
         <div class="dropdown-menu">
           <a class="dropdown-item" href="?m=student-registration">Registration</a>
           <div role="separator" class="dropdown-divider"></div>
-          <a class="dropdown-item" href="?m=class-management">Class Management</a>
+          <a class="dropdown-item" href="?m=enrollment">Enrollment</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Classes Management</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="?m=classes">Classes</a>
+          <a class="dropdown-item" href="?m=timetables">Timetables</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="?m=student-attendants">Students' Attendants</a>
+          <a class="dropdown-item" href="?m=tutor-attendants">Tutors' Attendants</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="?m=courses">Courses</a>
-          <div role="separator" class="dropdown-divider"></div>
           <a class="dropdown-item" href="?m=parent">Parents</a>
           <a class="dropdown-item" href="?m=tutors">Tutors</a>
           <a class="dropdown-item" href="?m=staffs">Staffs</a>
-          <div role="separator" class="dropdown-divider"></div>
-          <a class="dropdown-item" href="?m=payment">Payment</a>
+          <a class="dropdown-item" href="?m=vendors">Vendors</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Finance</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="?m=receivables">Invoices Receivable</a>
+          <a class="dropdown-item" href="?m=payable">Invoices Payable</a>
+          <a class="dropdown-item" href="?m=receipts">Receipts</a>
+          <a class="dropdown-item" href="?m=payments">Payments</a>
           <a class="dropdown-item" href="?m=financial">Financial Statement</a>
-          <div role="separator" class="dropdown-divider"></div>
-          <a class="dropdown-item" href="controller-backup.php">Backup Database</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">System</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="?m=backup-restore">Backup/Restore Database</a>
         </div>
       </li>
       <li class="nav-item dropdown">

@@ -1,30 +1,32 @@
 <main class="m-2">
-	<h2>Courses</h2>
+	<h2>Classes</h2>
 	<div>
-		<a href="?m=add-course" class="btn btn-primary my-2">Add new course</a>
+		<a href="?m=add-class" class="btn btn-primary my-2">Add new class</a>
 	</div>
 	<table class="table table-hover table-striped w-100">
 		<thead>
 			<tr>
 				<th></th>
-				<th>Course ID</th>
+				<th>Class ID</th>
 				<th>Subject</th>
 				<th>Level</th>
 				<th>Tutor</th>
+				<th>Time</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
-				$run = $conn->query("SELECT *,(SELECT (SELECT name FROM tutors WHERE tutors.id = course_tutor.tutor_id) FROM course_tutor WHERE course_tutor.course_id = courses.id) AS tutor FROM courses");
+				$run = $conn->query("SELECT * FROM classes");
 				while ( $row = $run->fetch_assoc() ){
 			?>
 				<tr>
 					<th>1</th>
-					<td>CRS<?php echo 1000+$row['id'] ?></td>
+					<td>CLS<?php echo 1000+$row['id'] ?></td>
 					<td><?php echo $row['subject'] ?></td>
 					<td><?php echo $row['level'] ?></td>
-					<td><?php echo $row['tutor'] ?></td></td>
+					<td>Amirul Zakwan</td>
+					<td>Thursday, 8:00pm - 10:00pm</td>
 					<td>
 						<div class="btn-group">
 							<button class="btn btn-primary" data-toggle="modal" data-target="#student-detail">View/Edit</button>
