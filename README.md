@@ -10,7 +10,7 @@ This system can be used either locally or over the internet. It requires Apache 
 
 1. Install XAMPP / WAMPP
 2. Locate the source file in C:/xampp/htdocs/<your_system_name>
-3. Open (http://localhost/phpmyadmin) via browser (Chrome, IE or Mozilla)
+3. Open http://localhost/phpmyadmin via browser (Chrome, IE or Mozilla)
 4. Create new database named Cempakawan (can be editted in the future)
 5. Import file named ```db.sql``` from the source code folder into the database
 6. Open http://localhost/<your_system_name> via browser
@@ -32,5 +32,3 @@ This system can be used either locally or over the internet. It requires Apache 
 ## Contact
 
 In the event of failure, users can contact the developer via email at asrar.artstudio@gmail.com.
-
-
