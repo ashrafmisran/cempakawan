@@ -1,6 +1,6 @@
 <?php $_SESSION['user']['locked'] = TRUE; ?>
 <div class="card m-4">
-	<form action="controller-login.php" method="post">
+	<form action="controller-unlock.php" method="post">
 		<div class="card-header">
 			<h2>Locked</h2>
 		</div>
@@ -14,9 +14,9 @@
 			<button type="submit" class="btn btn-primary">Log In</button>
 
 			<?php
-				if( isset($_SESSION['noti']) && isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] == 'controller-login.php' ){
+				if( isset($_SESSION['noti']) ){
 
-					echo '<div class="alert alert-danger alert-sm my-2">'.$_SESSION['noti'].'</div>';
+					echo $_SESSION['noti'];
 					session_unset( $_SESSION['noti'] );
 
 				} 

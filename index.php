@@ -24,7 +24,7 @@
 
 	<?php 
 
-		if( !isset($_SESSION['user']) ){
+		if( !isset($_SESSION['user']['id']) ){
 
 			if( !isset($_GET['m']) ){
 
