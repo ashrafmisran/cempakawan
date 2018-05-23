@@ -13,26 +13,27 @@
 				<th>Subject</th>
 				<th>Level</th>
 				<th>Enrolled On</th>
-				<th>Actions</th><p></p>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
-				$run = $conn->query("SELECT * FROM students");
+				$i = 0;
+				$run = $conn->query("SELECT *,(SELECT name FROM students WHERE students.id = enrolls.student) as name,(SELECT subject FROM classes WHERE classes.id = enrolls.class) AS subject,(SELECT level FROM classes WHERE classes.id = enrolls.class) AS level FROM enrolls");
 				while ( $row = $run->fetch_assoc() ){
+					$i++;
 			?>
 				<tr>
-					<th>1</th>
+					<th><?php echo($i) ?></th>
 					<td>STD<?php echo 1000+$row['id'] ?></td>
 					<td><?php echo $row['name'] ?></td>
-					<td>CLS1001</td>
-					<td>Maths</td>
-					<td>Standard 2</td>
+					<td>CLS<?php echo 1000+$row['class'] ?></td>
+					<td><?php echo $row['subject'] ?></td>
+					<td><?php echo $row['level'] ?></td>
 					<td><?php echo $row['registered_on'] ?></td>
 					<td>
 						<div class="btn-group">
-							<button class="btn btn-primary" data-toggle="modal" data-target="#student-detail">View/Edit</button>
-							<button class="btn btn-danger" data-toggle="modal" data-target="remove-student">Remove</button>
+							<button title="Remove from class" class="hastooltip btn btn-danger" data-toggle="modal" data-target="remove-student"><i class="fas fa-trash-alt"></i></button>
 						</div>
 					</td>
 				</tr>

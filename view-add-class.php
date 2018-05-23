@@ -5,6 +5,17 @@
 			<div class="card-body">
 				<div class="row mt-2">
 					<div class="col-md-3">
+						<label for="type">Type</label>
+					</div>
+					<div class="col-md-9">
+						<select id="type" type="radio" name="type" class="form-control" required autofocus>
+							<option value="1">Group</option>
+							<option value="0">Private</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
 						<label for="subject">Subject</label>
 					</div>
 					<div class="col-md-9">
@@ -30,6 +41,7 @@
 							<option>Form 5</option>
 							<option>Form 6 Lower</option>
 							<option>Form 6 Upper</option>
+							<option>Adults</option>
 						</select>
 					</div>
 				</div>
@@ -38,15 +50,23 @@
 						<label for="tutor">Tutor</label>
 					</div>
 					<div class="col-md-9">
-						<input id="tutor" name="tutor" class="form-control" required>
+						<select id="tutor" name="tutor" class="form-control select2" required>
+							<option selected disabled>Select...</option>
+							<?php 
+								$sql = "SELECT * FROM tutors";
+								$run = $conn->query($sql);
+								while ($row = $run->fetch_assoc()) { ?>
+									<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?> &lt;<?php echo $row['mykad']; ?>&gt;</option>
+							<?php } ?>	
+						</select>
 					</div>
 				</div>
 				<div class="row mt-2">
 					<div class="col-md-3">
-						<label for="tutor-sharge">Tutor's Charge</label>
+						<label for="tutor-rate">Tutor's Rate</label>
 					</div>
 					<div class="col-md-9">
-						<input id="tutor-charge" name="tutor-charge" class="form-control" required min="20" step="5" type="number">
+						<input id="tutor-rate" name="tutor-rate" class="form-control" required min="20" step="5" type="number">
 					</div>
 				</div>
 			</div>

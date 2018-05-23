@@ -1,0 +1,16 @@
+- boleh enroll sekali banyak subjek untuk seorang student
+- 25hb ke 24hb berikutnya period pembayaran
+- tutor active/quit
+- markah ujian bulanan
+- cari scanner yg durable
+- manual out kalau balik awal
+- time idle 1 jam 50 minit
+- senario pindah waktu kelas untuk one-off
+- cikgu balik awal akan prorate
+- cikgu boleh tengok income setakat ini
+- cikgu kemungkinan tukar2 kelas
+- kelas private/group
+- kiraan gaji guru ikut attendance (senang tak dynamic)
+- daily petty cash
+- quit still ada dalam db dan highlighted
+- result exam sekolah

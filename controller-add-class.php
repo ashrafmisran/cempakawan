@@ -2,10 +2,22 @@
 
 	include 'function.php';
 
-	$subject = $_POST['subject'];
-	$level   = $_POST['level'];
-	$tutor   = $_POST['tutor'];
+	$type	 		= sanitize( $_POST['type'] );
+	$subject 		= sanitize( $_POST['subject'] );
+	$level   		= sanitize( $_POST['level'] );
+	$tutor 			= sanitize( $_POST['tutor'] );
+	$tutor_rate	    = sanitize( $_POST['tutor-rate'] );
 
-	$sql = "INSERT INTO classes (subject,level,tutor) VALUES ('$subject','$level','$tutor')";
+	
+	$sql = "INSERT INTO classes (is_group,subject,level,tutor,tutor_rate) VALUES ($type,'$subject','$level','$tutor',$tutor_rate)";
+	$run = $conn->query($sql);
+
+	if ($run != FALSE) {
+		$_SESSION['noti']	= 'Registration succeed';
+		header( 'Location: index.php?m=classes');
+	}else{
+		$_SESSION['noti']	= 'Registration failed';
+		header( 'Location: '.$_SERVER['HTTP_REFERER'] );
+	}
 
 ?>

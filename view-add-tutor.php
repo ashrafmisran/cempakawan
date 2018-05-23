@@ -6,26 +6,26 @@
 			<!-- Tutor -->
 			<div class="row mt-2">
 				<div class="col-md-3">
-					<label for="ttr-fullname">Name</label>
+					<label for="fullname">Name</label>
 				</div>
 				<div class="col-md-9">
-					<input id="ttr-fullname" type="text" name="ttr-fullname" class="form-control" autofocus required>
+					<input id="fullname" type="text" name="fullname" class="form-control" autofocus required>
 				</div>
 			</div>
 			<div class="row mt-2">
 				<div class="col-md-3">
-					<label for="ttr-mykad">MyKad/MyKid</label>
+					<label for="mykad">MyKad/MyKid</label>
 				</div>
 				<div class="col-md-9">
-					<input id="ttr-mykad" type="text" name="ttr-mykad" class="form-control" required>
+					<input id="mykad" type="text" name="mykad" class="form-control" required>
 				</div>
 			</div>
 			<div class="row mt-2">
 				<div class="col-md-3">
-					<label for="ttr-phone">Phone No.</label>
+					<label for="phone">Phone No.</label>
 				</div>
 				<div class="col-md-9">
-					<input id="ttr-phone" type="text" name="ttr-phone" class="form-control" required>
+					<input id="phone" type="text" name="phone" class="form-control" required>
 				</div>
 			</div>
 			

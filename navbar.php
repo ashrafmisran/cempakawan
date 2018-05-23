@@ -24,8 +24,7 @@
           <a class="dropdown-item" href="?m=classes">Classes</a>
           <a class="dropdown-item" href="?m=timetables">Timetables</a>
           <div role="separator" class="dropdown-divider"></div>
-          <a class="dropdown-item" href="?m=student-attendance">Students' Attendance</a>
-          <a class="dropdown-item" href="?m=tutor-attendance">Tutors' Attendance</a>
+          <a class="dropdown-item" href="?m=attendances">Attendances</a>
         </div>
       </li>
       <li class="nav-item dropdown">

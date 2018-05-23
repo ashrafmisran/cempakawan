@@ -21,6 +21,16 @@
 	<!-- Font Awesome -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 
+	<!-- select2 -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+	<!-- daterangepicker -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+	<!-- chart.js -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 
 </head>
 <body>
@@ -89,6 +99,8 @@
 		$('.datatable').DataTable();
 
 		$('.hastooltip').tooltip();
+
+		$('.select2').select2();
 	</script>
 
 

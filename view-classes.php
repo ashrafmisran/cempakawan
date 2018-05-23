@@ -8,32 +8,36 @@
 			<tr>
 				<th></th>
 				<th>Class ID</th>
+				<th>Type</th>
 				<th>Subject</th>
 				<th>Level</th>
-				<th>No. of Student</th>
 				<th>Tutor</th>
+				<th>Size</th>
 				<th>Time</th>
-				<th>Actions</th>
+				<th width="170">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
-				$run = $conn->query("SELECT * FROM classes");
+				$i   = 0;
+				$run = $conn->query("SELECT *,(SELECT count(*) FROM enrolls WHERE enrolls.class = classes.id) AS no_student,(SELECT name FROM tutors WHERE tutors.id = classes.tutor) AS tutor_name FROM classes ORDER BY is_group,level");
 				while ( $row = $run->fetch_assoc() ){
+					$i++;
 			?>
 				<tr>
-					<th>1</th>
+					<th><?php echo $i; ?></th>
 					<td>CLS<?php echo 1000+$row['id'] ?></td>
+					<td><?php if($row['is_group']){echo 'Group';}else{echo "Private";} ?></td>
 					<td><?php echo $row['subject'] ?></td>
 					<td><?php echo $row['level'] ?></td>
-					<td>10 [p]</td>
-					<td>Amirul Zakwan [p]</td>
+					<td><?php echo $row['tutor_name'] ?></td>
+					<td><?php echo $row['no_student'] ?></td>
 					<td>Thursday, 8:00pm - 10:00pm [p]</td>
-					<td>
-						<a href="?m=enroll-student" class="btn btn-primary text-white">Enroll student</a>
+					<td width="150px">
+						<a title="Enroll student" href="?m=enroll-student" class="btn hastooltip btn-primary text-white"><i class="fas fa-book"></i></a>
 						<div class="btn-group">
-							<button class="btn btn-primary" data-toggle="modal" data-target="#student-detail">View/Edit</button>
-							<button class="btn btn-danger" data-toggle="modal" data-target="remove-student">Remove</button>
+							<button title="View" class="btn hastooltip btn-primary" data-toggle="modal" data-target="#student-detail"><i class="fas fa-eye"></i></button>
+							<button title="Remove class" class="btn hastooltip btn-danger" data-toggle="modal" data-target="remove-student"><i class="fas fa-trash-alt"></i></button>
 						</div>
 					</td>
 				</tr>

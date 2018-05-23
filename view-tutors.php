@@ -26,10 +26,10 @@
 					<td><?php echo $row['mykad'] ?></td>
 					<td><?php echo $row['phone'] ?></td>
 					<td>
-						<a href="?m=add-class&tutor=<?php echo 1000+$row['id'] ?>" class="btn btn-primary text-white">Add class</a>
+						<a href="?m=add-class&tutor=<?php echo $row['id'] ?>" title="Add class" class="hastooltip btn btn-primary text-white"><i class="fas fa-book"></i></a>
 						<div class="btn-group">
-							<button class="btn btn-primary" data-toggle="modal" data-target="#student-detail">View/Edit</button>
-							<button class="btn btn-danger" data-toggle="modal" data-target="remove-student">Remove</button>
+							<button title="View" class="hastooltip btn btn-primary" data-toggle="modal" data-target="#student-detail"><i class="fas fa-eye"></i></button>
+							<button title="Remove tutor" class="hastooltip btn btn-danger" data-toggle="modal" data-target="remove-student"><i class="fas fa-trash-alt"></i></button>
 						</div>
 					</td>
 				</tr>

@@ -42,7 +42,7 @@
 					<label for="level">Level</label>
 				</div>
 				<div class="col-md-9">
-					<select id="level" name="level" class="form-control" required>
+					<select id="level" name="level" class="form-control select2" required>
 						<option disabled selected>Choose...</option>
 						<optgroup label="Primary">
 							<option value="1">Std 1</option>
