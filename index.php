@@ -87,6 +87,8 @@
 
 	<script type="text/javascript">
 		$('.datatable').DataTable();
+
+		$('.hastooltip').tooltip();
 	</script>
 
 

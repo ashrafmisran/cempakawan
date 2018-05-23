@@ -1,8 +1,8 @@
 -- MySQL dump 10.16  Distrib 10.1.25-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: cempakawan
+-- Host: localhost    Database: cempakawan_v2
 -- ------------------------------------------------------
--- Server version	10.1.26-MariaDB
+-- Server version	10.1.25-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -222,6 +222,7 @@ CREATE TABLE `students` (
   `residential` text NOT NULL,
   `school_name` text NOT NULL,
   `phone_no` text NOT NULL,
+  `remark` text NOT NULL,
   `registered_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `quit_on` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -235,7 +236,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (1,'Asrar Mujahid Muhammad Ashraf',0,'150515106459','','SRITI','','2018-04-29 22:09:41','0000-00-00 00:00:00'),(4,'Asrar Annisa Muhammad Ashraf',0,'160828104658','','SRIDU','','2018-04-29 23:44:52','0000-00-00 00:00:00'),(5,'Asrar Mukmin Muhammad Ashraf',0,'200220014321','','SRIDU','','2018-04-29 23:53:07','0000-00-00 00:00:00'),(6,'Asrar Annajwa',0,'221110102244','','PASTI','','2018-04-30 12:27:56','0000-00-00 00:00:00'),(7,'Asrar Muhammad bin Muhammad Ashraf',0,'230111042233','','SK Batang Benar','','2018-05-20 07:06:59','0000-00-00 00:00:00');
+INSERT INTO `students` VALUES (1,'Asrar Mujahid Muhammad Ashraf',9,'150515106459','','SRITI','0145102864','','2018-05-23 09:08:59','0000-00-00 00:00:00'),(4,'Asrar Annisa Muhammad Ashraf',8,'160828104658','','SRIDU','0136609070','','2018-05-23 09:09:02','0000-00-00 00:00:00'),(5,'Asrar Mukmin Muhammad Ashraf',5,'200220014321','','SRIDU','01110602864','','2018-05-23 09:09:18','0000-00-00 00:00:00'),(6,'Asrar Annajwa',4,'221110102244','','PASTI','01111561192','','2018-05-23 09:09:21','0000-00-00 00:00:00'),(7,'Asrar Muhammad bin Muhammad Ashraf',2,'230111042233','','SK Batang Benar','01110632864','Phone ibu','2018-05-23 09:23:28','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,4 +324,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-23 16:15:27
+-- Dump completed on 2018-05-23 17:31:44

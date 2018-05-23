@@ -10,7 +10,11 @@
 				<th>Student ID</th>
 				<th>Name</th>
 				<th>MyKad/MyKid</th>
-				<th>Subjects</th>
+				<th>School Name</th>
+				<th>Level</th>
+				<th>Residential</th>
+				<th>Phone No.</th>
+				<th>Remark</th>
 				<th>Registered On</th>
 				<th>Actions</th>
 			</tr>
@@ -25,12 +29,63 @@
 					<td>STD<?php echo 1000+$row['id'] ?></td>
 					<td><?php echo $row['name'] ?></td>
 					<td><?php echo $row['mykad'] ?></td>
-					<td>Maths</td>
-					<td><?php echo $row['registered_on'] ?></td>
+					<td><?php echo $row['school_name'] ?></td>
+					<td>
+						<?php 
+							switch ($row['level']) {
+								case '1':
+									echo 'A) Std 1';
+									break;
+								case '2':
+									echo 'A) Std 2';
+									break;
+								case '3':
+									echo 'A) Std 3';
+									break;
+								case '4':
+									echo 'A) Std 4';
+									break;
+								case '5':
+									echo 'A) Std 5';
+									break;
+								case '6':
+									echo 'A) Std 6';
+									break;
+								case '7':
+									echo 'B) Form 1';
+									break;
+								case '8':
+									echo 'B) Form 2';
+									break;
+								case '9':
+									echo 'B) Form 3';
+									break;
+								case '10':
+									echo 'B) Form 4';
+									break;
+								case '11':
+									echo 'B) Form 5';
+									break;
+								case '12':
+									echo 'B) Form 6L';
+									break;
+								case '13':
+									echo 'B) Form 6U';
+									break;
+								case '14':
+									echo 'C) Adult';
+									break;								
+							}
+						?>
+					</td>
+					<td><?php echo $row['residential'] ?></td>
+					<td><?php echo $row['phone_no'] ?></td>
+					<td><?php echo $row['remark'] ?></td>
+					<td><?php echo date('Y-m-d',strtotime($row['registered_on'])) ?></td>
 					<td>
 						<div class="btn-group">
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#student-detail">View/Edit</button>
-							<button class="btn btn-danger" data-toggle="modal" data-target="remove-student">Remove</button>
+							<button type="button" class="btn btn-primary hastooltip" data-toggle="modal" data-target="#student-detail" title="View"><i class="fas fa-eye"></i></button>
+							<button class="btn btn-danger hastooltip" data-toggle="modal" data-target="remove-student" title="Delete student registration"><i class="fas fa-trash-alt"></i></button>
 						</div>
 					</td>
 				</tr>
