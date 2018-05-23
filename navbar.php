@@ -20,20 +20,12 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Classes Management</a>
         <div class="dropdown-menu">
+          <a class="dropdown-item" href="?m=tutors">Tutors</a>
           <a class="dropdown-item" href="?m=classes">Classes</a>
           <a class="dropdown-item" href="?m=timetables">Timetables</a>
           <div role="separator" class="dropdown-divider"></div>
-          <a class="dropdown-item" href="?m=student-attendants">Students' Attendants</a>
-          <a class="dropdown-item" href="?m=tutor-attendants">Tutors' Attendants</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="?m=parent">Parents</a>
-          <a class="dropdown-item" href="?m=tutors">Tutors</a>
-          <a class="dropdown-item" href="?m=staffs">Staffs</a>
-          <a class="dropdown-item" href="?m=vendors">Vendors</a>
+          <a class="dropdown-item" href="?m=student-attendance">Students' Attendance</a>
+          <a class="dropdown-item" href="?m=tutor-attendance">Tutors' Attendance</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -55,7 +47,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="?m=user-profile">Profile</a>
+          <!-- <a class="dropdown-item" href="?m=user-profile">Profile</a> -->
           <a class="dropdown-item" href="?m=change-password">Change Password</a>
           <a class="dropdown-item" href="?m=locked-user">Lock</a>
           <div role="separator" class="dropdown-divider"></div>

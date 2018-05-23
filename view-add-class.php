@@ -16,7 +16,7 @@
 						<label for="level">Level</label>
 					</div>
 					<div class="col-md-9">
-						<select id="level" name="subject" class="form-control" required>
+						<select id="level" name="level" class="form-control" required>
 							<option>Standard 1</option>
 							<option>Standard 2</option>
 							<option>Standard 3</option>
@@ -35,27 +35,24 @@
 				</div>
 				<div class="row mt-2">
 					<div class="col-md-3">
-						<label for="stream">Stream</label>
-					</div>
-					<div class="col-md-9">
-						<select id="stream" name="stream" class="form-control" required>
-							<option>Art</option>
-							<option>Science</option>
-						</select>
-					</div>
-				</div>
-				<div class="row mt-2">
-					<div class="col-md-3">
 						<label for="tutor">Tutor</label>
 					</div>
 					<div class="col-md-9">
 						<input id="tutor" name="tutor" class="form-control" required>
 					</div>
 				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<label for="tutor-sharge">Tutor's Charge</label>
+					</div>
+					<div class="col-md-9">
+						<input id="tutor-charge" name="tutor-charge" class="form-control" required min="20" step="5" type="number">
+					</div>
+				</div>
 			</div>
 			<div class="card-footer">
 				<button type="submit" class="btn btn-primary">Add class</button>
-				<a href="?m=student-registration" class="btn btn-danger">Cancel</a>
+				<a href="?m=classes" class="btn btn-danger">Cancel</a>
 			</div>
 		</div>
 	</form>

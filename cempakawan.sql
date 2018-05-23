@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2018 at 05:14 AM
+-- Generation Time: May 23, 2018 at 07:23 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -64,8 +64,8 @@ CREATE TABLE `enrolls` (
 
 CREATE TABLE `invoices` (
   `id` int(11) NOT NULL,
-  `parent` int(11) NOT NULL,
-  `student_enroll_amount` text NOT NULL,
+  `student` int(11) NOT NULL,
+  `enroll_amount` text NOT NULL,
   `total` float NOT NULL,
   `invoice_date` date NOT NULL,
   `due_date` date NOT NULL,
@@ -138,6 +138,7 @@ CREATE TABLE `payments` (
 CREATE TABLE `receipts` (
   `id` int(11) NOT NULL,
   `invoice` int(11) NOT NULL,
+  `receipt_serial_no` int(11) NOT NULL,
   `amount` float NOT NULL,
   `datetime` datetime NOT NULL,
   `receipt_by` int(11) NOT NULL
@@ -152,23 +153,25 @@ CREATE TABLE `receipts` (
 CREATE TABLE `students` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
+  `level` int(11) NOT NULL,
   `mykad` varchar(12) NOT NULL,
-  `bod` date NOT NULL,
-  `is_male` tinyint(1) NOT NULL,
+  `residential` text NOT NULL,
   `school_name` text NOT NULL,
-  `parent_id` int(11) NOT NULL,
-  `registered_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `phone_no` text NOT NULL,
+  `registered_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `quit_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `name`, `mykad`, `bod`, `is_male`, `school_name`, `parent_id`, `registered_on`) VALUES
-(1, 'Asrar Mujahid Muhammad Ashraf', '150515106459', '2015-05-10', 1, 'SRITI', 1, '2018-04-29 22:09:41'),
-(4, 'Asrar Annisa Muhammad Ashraf', '160828104658', '2016-08-28', 0, 'SRIDU', 21, '2018-04-29 23:44:52'),
-(5, 'Asrar Mukmin Muhammad Ashraf', '200220014321', '2020-02-20', 1, 'SRIDU', 1, '2018-04-29 23:53:07'),
-(6, 'Asrar Annajwa', '221110102244', '2022-11-10', 0, 'PASTI', 21, '2018-04-30 12:27:56');
+INSERT INTO `students` (`id`, `name`, `level`, `mykad`, `residential`, `school_name`, `phone_no`, `registered_on`, `quit_on`) VALUES
+(1, 'Asrar Mujahid Muhammad Ashraf', 0, '150515106459', '', 'SRITI', '', '2018-04-29 22:09:41', '0000-00-00 00:00:00'),
+(4, 'Asrar Annisa Muhammad Ashraf', 0, '160828104658', '', 'SRIDU', '', '2018-04-29 23:44:52', '0000-00-00 00:00:00'),
+(5, 'Asrar Mukmin Muhammad Ashraf', 0, '200220014321', '', 'SRIDU', '', '2018-04-29 23:53:07', '0000-00-00 00:00:00'),
+(6, 'Asrar Annajwa', 0, '221110102244', '', 'PASTI', '', '2018-04-30 12:27:56', '0000-00-00 00:00:00'),
+(7, 'Asrar Muhammad bin Muhammad Ashraf', 0, '230111042233', '', 'SK Batang Benar', '', '2018-05-20 07:06:59', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -178,15 +181,17 @@ INSERT INTO `students` (`id`, `name`, `mykad`, `bod`, `is_male`, `school_name`, 
 
 CREATE TABLE `tutors` (
   `id` int(11) NOT NULL,
-  `name` text COLLATE utf8_bin NOT NULL
+  `name` text COLLATE utf8_bin NOT NULL,
+  `mykad` text COLLATE utf8_bin NOT NULL,
+  `phone` text COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `tutors`
 --
 
-INSERT INTO `tutors` (`id`, `name`) VALUES
-(0, 'Amirul Zakwan');
+INSERT INTO `tutors` (`id`, `name`, `mykad`, `phone`) VALUES
+(0, 'Amirul Zakwan', '911101065717', '0145102864');
 
 -- --------------------------------------------------------
 
@@ -266,6 +271,12 @@ ALTER TABLE `students`
   ADD UNIQUE KEY `mykad` (`mykad`);
 
 --
+-- Indexes for table `tutors`
+--
+ALTER TABLE `tutors`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -300,12 +311,12 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `parents`
 --
 ALTER TABLE `parents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `users`
 --

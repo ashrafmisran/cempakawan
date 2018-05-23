@@ -3,31 +3,31 @@
 	<div>
 		<a href="?m=enroll-student" class="btn btn-primary my-2">Enroll student</a>
 	</div>
-	<table class="table table-responsive table-hover table-striped w-100">
+	<table class="table table-hover table-striped w-100 datatable">
 		<thead>
 			<tr>
 				<th></th>
 				<th>Student ID</th>
 				<th>Name</th>
-				<th>MyKad/MyKid</th>
-				<th>Parent's Name</th>
-				<th>Subjects</th>
-				<th>Registered On</th>
-				<th>Actions</th>
+				<th>Class ID</th>
+				<th>Subject</th>
+				<th>Level</th>
+				<th>Enrolled On</th>
+				<th>Actions</th><p></p>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
-				$run = $conn->query("SELECT *,(SELECT name FROM parents WHERE parents.id = students.parent_id) AS parent_fullname FROM students");
+				$run = $conn->query("SELECT * FROM students");
 				while ( $row = $run->fetch_assoc() ){
 			?>
 				<tr>
 					<th>1</th>
 					<td>STD<?php echo 1000+$row['id'] ?></td>
 					<td><?php echo $row['name'] ?></td>
-					<td><?php echo $row['mykad'] ?></td>
-					<td><?php echo $row['parent_fullname'] ?></td>
+					<td>CLS1001</td>
 					<td>Maths</td>
+					<td>Standard 2</td>
 					<td><?php echo $row['registered_on'] ?></td>
 					<td>
 						<div class="btn-group">
