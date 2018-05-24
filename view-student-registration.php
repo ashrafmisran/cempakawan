@@ -21,7 +21,11 @@
 		</thead>
 		<tbody>
 			<?php
-				$run = $conn->query("SELECT * FROM students");
+				$sql = "SELECT *, 
+						(SELECT (sum(transactions.debit)-sum(transactions.credit)) FROM transactions WHERE account = 11 AND transactions.subaccount = students.id AND type = 'Student' ) AS debt,
+						(SELECT (sum(transactions.credit)-sum(transactions.debit)) FROM transactions WHERE account = 6 AND transactions.subaccount = students.id AND type = 'Student' ) AS prepayment
+						FROM students";
+				$run = $conn->query($sql);
 				$i = 0;
 				while ( $row = $run->fetch_assoc() ){
 					$i++;
@@ -87,52 +91,92 @@
 					<td>
 						<a href="?m=enroll-student&student=<?php echo $row['mykad'] ?>" class="btn btn-primary text-white hastooltip" title="Enroll student to class"><i class="fas fa-book"></i></a>
 						<div class="btn-group">
-							<button type="button" class="btn btn-primary hastooltip" data-toggle="modal" data-target="#student-detail" title="View"><i class="fas fa-eye"></i></button>
+							<button type="button" class="btn btn-primary hastooltip" data-toggle="modal" data-target="#student-detail-<?php echo($row['id']) ?>" title="View"><i class="fas fa-eye"></i></button>
 							<button class="btn btn-danger hastooltip" data-toggle="modal" data-id="<?php echo($row['id']) ?>" data-target="#modal-remove-student" title="Delete student registration"><i class="fas fa-trash-alt"></i></button>
 						</div>
 					</td>
 				</tr>
+
+
+				<!-- Modal -->
+				<div class="modal fade" id="student-detail-<?php echo($row['id']) ?>" tabindex="-1" role="dialog" aria-labelledby="#student-detail-title" aria-hidden="true">
+				  <div class="modal-dialog modal-lg" role="document">
+				    <div class="modal-content">
+
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="student-detail-title">Student's Detail &ndash; <?php echo($row['name']) ?></h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+
+				      <div class="modal-body">
+						<div id="student-detail-tab-content">
+							<div id="biodata">
+								<h5>Biodata</h5>
+							</div>
+							<hr>
+							<div id="enrollment">
+								<h5>Enrollment</h5>
+								<?php 
+									$sql2 = "SELECT (SELECT subject FROM classes WHERE classes.id = enrolls.class) as subject, (SELECT level FROM classes WHERE classes.id = enrolls.class) as level, (SELECT (SELECT name FROM tutors WHERE tutors.id = classes.tutor) FROM classes WHERE classes.id = enrolls.class) as tutor FROM enrolls WHERE student = ".$row['id'];
+									$run2 = $conn->query($sql2);
+									while( $row2 = $run2->fetch_assoc() ){
+								?>
+									<div class="container">
+										<div class="row">
+											<div class="col">
+												<div><?php echo $row2['subject']; ?></div>
+											</div>
+											<div class="col">
+												<div><?php echo $row2['level']; ?></div>
+											</div>
+											<div class="col">
+												<div><?php echo $row2['tutor']; ?></div>
+											</div>
+										</div>
+									</div>
+								<?php } ?>
+							</div>
+							<hr>
+							<div id="finance">
+								<h5>Finance</h5>
+								<div class="container">
+									<div class="row">
+										<div class="col">
+											<p>Advance Payment</p>
+										</div>
+										<div class="col">
+											<p>RM<?php if($row['prepayment']==NULL){$row['prepayment']=0;} echo($row['prepayment']) ?></p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<p>Outstanding debt</p>
+										</div>
+										<div class="col">
+											<p>RM<?php if($row['debt']==NULL){$row['debt']=0;} echo($row['debt']) ?> <a class="btn btn-sm btn-outline-primary" href="?m=add-payment-by-student&student=<?php echo($row['id']) ?>">Pay</a></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				      </div>
+
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-primary">Save changes</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
 			<?php } ?>
 		</tbody>
 		<tfoot></tfoot>
 	</table>
 </main>
 
-<!-- Modal -->
-<div class="modal fade" id="student-detail" tabindex="-1" role="dialog" aria-labelledby="#student-detail-title" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="student-detail-title">Student's Detail</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <ul id="student-detail-tab-button" class="nav nav-tabs">
-		  <li class="nav-item">
-		    <button class="nav-link active" href="#biodata">Biodata</button>
-		  </li>
-		  <li class="nav-item">
-		    <button class="nav-link" href="#enrollment">Enrollment</button>
-		  </li>
-		  <li class="nav-item">
-		    <button class="nav-link" href="#finance">Finance</button>
-		  </li>
-		</ul>
-		<div id="student-detail-tab-content">
-			<div id="biodata">A</div>
-			<div id="enrollment">B</div>
-			<div id="finance">C</div>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="modal fade" id="modal-remove-student">
 	<div class="modal-dialog" role="document">
