@@ -1,5 +1,8 @@
 <main class="m-2">
 	<h2>Timetable</h2>
+	<div class="calendar"></div>
+
+	<!-- 
 	<div>
 		<a href="?m=enroll-student" class="btn btn-primary my-2">Edit</a>
 	</div>
@@ -162,5 +165,5 @@
 			</tr>
 		</tbody>
 		<tfoot></tfoot>
-	</table>
+	</table> -->
 </main>

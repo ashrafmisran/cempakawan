@@ -32,6 +32,11 @@
 	<!-- chart.js -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 
+	<!-- fullcalendar -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css">
+
 </head>
 <body>
 
@@ -105,6 +110,10 @@
 		$('.select2-multiple').select2({
 			placeholder: 'You may choose more than 1',
 			multiple: 'true'
+		});
+
+		$('.calendar').fullCalendar({
+		  defaultView: 'agendaWeek'
 		});
 	</script>
 
