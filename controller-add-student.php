@@ -11,11 +11,12 @@
 	$remark			= sanitize( $_POST['remark'] );
 
 
-	$run3				= $conn->query( "INSERT INTO students (name,level,mykad,residential,school_name,phone_no,remark) VALUES ('$fullname','$level','$mykad','$residential','$school_name','$phone','$remark')" );
+	$run				= $conn->query( "INSERT INTO students (name,level,mykad,residential,school_name,phone_no,remark) VALUES ('$fullname','$level','$mykad','$residential','$school_name','$phone','$remark')" );
 
-	if ($run1 != FALSE && $run3 != FALSE) {
+	if ($run != FALSE) {
 		$_SESSION['noti']	= 'Registration succeed';
-		header( 'Location: '.$_SERVER['HTTP_REFERER'] );
+		echo $redirect = 'Location: controller-charge-registration.php?student='.$conn->insert_id;
+		header( $redirect);
 	}else{
 		$_SESSION['noti']	= 'Registration failed';
 		header( 'Location: '.$_SERVER['HTTP_REFERER'] );

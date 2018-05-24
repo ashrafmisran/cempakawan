@@ -101,6 +101,11 @@
 		$('.hastooltip').tooltip();
 
 		$('.select2').select2();
+
+		$('.select2-multiple').select2({
+			placeholder: 'You may choose more than 1',
+			multiple: 'true'
+		});
 	</script>
 
 

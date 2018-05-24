@@ -27,8 +27,7 @@
 					<label for="class">Class</label>
 				</div>
 				<div class="col-md-9">
-					<select id="class" name="class" class="form-control select2" required>
-						<option selected disabled>Select...</option>
+					<select id="class" name="class" class="form-control select2-multiple" required multiple>
 						<optgroup label="Group">
 							<?php 
 								$sql = "SELECT * FROM classes WHERE is_group = 1 ORDER BY subject";
