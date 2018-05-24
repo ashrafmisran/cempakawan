@@ -5,17 +5,14 @@
  	/*Debit cash account*/
 
 	$debit['account']	  		= 1; /*Cash account: 1*/
-	//$debit['subaccount']  		= $_POST['pay-to']; /*Cash at hand:0; Bank Islam:1; Maybank:2*/
-	$debit['subaccount']  		= 1; /*Cash at hand:0; Bank Islam:1; Maybank:2*/
+	$debit['subaccount']  		= $_POST['paid-via']; /*Cash at hand:0; Bank Islam:1; Maybank:2*/
 	$debit['type']        		= 'Self';
-	//$debit['amount']	  		= $_POST['amount'];
-	$debit['amount']	  		= 150;
+	$debit['amount']	  		= $_POST['amount'];
 
 	/*Seperate payment and credit either receivable fee (incurred) or prepayment (next months)*/
 	
 	$credit['type']        		= 'Student';
-	//$credit['subaccount']	 	= $_POST['id']; /*Student ID*/
-	$credit['subaccount']	 	= 1; /*Student ID*/
+	$credit['subaccount']	 	= $_POST['student']; /*Student ID*/
 
 	/*Receivable fee*/
 	$credit[1]['account'] 		= 11; /*Code for Receivable fee acc*/
@@ -49,5 +46,8 @@
 	/*Remove zero credit and zero debit rows*/
 	$sql = "DELETE FROM transactions WHERE debit = 0 AND credit = 0";
 	$run = $conn->query($sql);
+
+	$redirect = 'Location: index.php?m=add-payment-by-student';
+	header($redirect);
 
 ?>

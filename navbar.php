@@ -30,11 +30,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Finance</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="?m=receivables">Invoices Receivable</a>
-          <a class="dropdown-item" href="?m=payable">Invoices Payable</a>
-          <a class="dropdown-item" href="?m=receipts">Receipts</a>
-          <a class="dropdown-item" href="?m=payments">Payments</a>
-          <a class="dropdown-item" href="?m=financial">Financial Statement</a>
+          <a class="dropdown-item" href="?m=add-payment-by-student">Payment by Student</a>
         </div>
       </li>
       <li class="nav-item dropdown">
