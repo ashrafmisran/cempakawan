@@ -8,7 +8,7 @@ $user = 'root';
 $pass = '';
 $host = 'localhost';
 //$dir = dirname(__FILE__) . '\dump.sql';
-$time = date("Ymd-hisa");
+$time = date("Ymd-His");
 $dir = 'backup/backup-'.$time.'.sql';
 echo "<h3>Backing up database to `<code>{$dir}</code>`</h3>";
 exec("mysqldump.exe --user={$user} --password={$pass} --host={$host} {$database} > $dir", $output);
