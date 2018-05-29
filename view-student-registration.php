@@ -1,7 +1,20 @@
 <main class="m-2">
 	<h2>Students Registration</h2>
 	<div>
-		<a href="?m=add-student" class="btn btn-primary my-2">Add new student</a>
+		<?php
+			$addstudent = new Anchor;
+			$addstudent->setlabel('Add new student');
+			$addstudent->setclass(
+				array(
+					'btn-primary',
+					'mb-1',
+					'mr-1'
+				)
+			);
+			$addstudent->sethyperlink('?m=add-student');
+			$addstudent->seticon('plus');
+			$addstudent->show();
+		?>
 	</div>
 	<table class="table table-hover table-striped w-100 datatable">
 		<thead>
@@ -24,7 +37,7 @@
 				$sql = "SELECT *, 
 						(SELECT (sum(transactions.debit)-sum(transactions.credit)) FROM transactions WHERE account = 11 AND transactions.subaccount = students.id AND type = 'Student' ) AS debt,
 						(SELECT (sum(transactions.credit)-sum(transactions.debit)) FROM transactions WHERE account = 6 AND transactions.subaccount = students.id AND type = 'Student' ) AS prepayment
-						FROM students";
+						FROM students ORDER BY id DESC";
 				$run = $conn->query($sql);
 				$i = 0;
 				while ( $row = $run->fetch_assoc() ){
