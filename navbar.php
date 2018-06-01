@@ -41,6 +41,7 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Finance</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="?m=add-payment-by-student">Payment by Student</a>
+          <a class="dropdown-item" href="?m=financial-performance">Financial Performance</a>
         </div>
       </li>
       <li class="nav-item dropdown">

@@ -25,6 +25,9 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
+	<!-- moment.js -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
 	<!-- daterangepicker -->
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -107,14 +110,55 @@
 
 		$('.select2').select2();
 
+		$('.monthpicker').daterangepicker({
+			"singleDatePicker": true,
+			ranges: {
+		        'Today': [moment(), moment()],
+		        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+		        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+		        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+		        'This Month': [moment().startOf('month'), moment().endOf('month')],
+		        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+		    }, 
+		    "locale": {
+		        "format": "MMMM YYYY"
+		    },
+		    "startDate": "June 2018",
+		});
+
+
+
+		$('.rangepicker').daterangepicker({
+			"singleDatePicker": false,
+			ranges: {
+				'This Quarter': [moment().startOf('quarter'), moment().endOf('quarter')],
+				'Last Quarter': [moment().subtract(1, 'quarter').startOf('quarter'), moment().subtract(1, 'quarter').endOf('quarter')],
+		        'This Year': [moment().startOf('year'), moment().endOf('year')],
+		        'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
+		        'Year 2016': [moment().subtract(2, 'year').startOf('year'), moment().subtract(2, 'year').endOf('year')],
+		        'All time': [moment("20161101","YYYYMMDD"), moment()]
+		    }, 
+		    "locale":{
+		        "format": "DD/MM/YYYY"
+		    },
+		    "startDate": moment("20161101","YYYYMMDD"),
+		    "endDate": moment()
+		}, function(start, end, label) {
+		  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+		});
+
 		$('.select2-multiple').select2({
 			placeholder: 'You may choose more than 1',
 			multiple: 'true'
 		});
 
-		$('.calendar').fullCalendar({
-		  defaultView: 'agendaWeek'
-		});
+		$(function() {
+
+			$('.calendar').fullCalendar({
+			  defaultView: 'agendaWeek'
+			});
+		})
+
 	</script>
 
 
