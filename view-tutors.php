@@ -3,28 +3,29 @@
 	<div>
 		<a href="?m=add-tutor" class="btn btn-primary my-2">Add new tutor</a>
 	</div>
-	<table class="table table-hover table-striped w-100">
+	<table class="table table-hover table-striped w-100 datatable">
 		<thead>
 			<tr>
 				<th></th>
 				<th>Tutor ID</th>
 				<th>Name</th>
-				<th>MyKad</th>
-				<th>Phone No</th>
+				<th>Bank</th>
+				<th>Account No</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
-				$run = $conn->query("SELECT * FROM tutors");
+				$i = 1;
+				$run = $conn->query("SELECT * FROM tutors WHERE status != 3");
 				while ( $row = $run->fetch_assoc() ){
 			?>
 				<tr>
-					<th>1</th>
+					<th><?php echo $i++ ?></th>
 					<td>TTR<?php echo 1000+$row['id'] ?></td>
 					<td><?php echo $row['name'] ?></td>
-					<td><?php echo $row['mykad'] ?></td>
-					<td><?php echo $row['phone'] ?></td>
+					<td><?php echo $row['bank'] ?></td>
+					<td><?php echo $row['acc_no'] ?></td>
 					<td>
 						<a href="?m=add-class&tutor=<?php echo $row['id'] ?>" title="Add class" class="hastooltip btn btn-primary text-white"><i class="fas fa-book"></i></a>
 						<div class="btn-group">

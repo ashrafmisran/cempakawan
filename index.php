@@ -37,6 +37,12 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css">
 
+	<style type="text/css">
+		body{
+			zoom: 0.75;
+		}
+	</style>
+
 </head>
 <body>
 

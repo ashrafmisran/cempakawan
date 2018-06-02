@@ -75,14 +75,6 @@
 					<input id="phone" type="text" name="phone" class="form-control" required>
 				</div>
 			</div>
-			<div class="row mt-2">
-				<div class="col-md-3">
-					<label for="remark">Remark</label>
-				</div>
-				<div class="col-md-9">
-					<textarea id="remark" type="text" name="remark" class="form-control"></textarea>
-				</div>
-			</div>
 
 		</div>
 		<div class="card-footer">

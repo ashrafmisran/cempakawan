@@ -8,10 +8,9 @@
 	$school_name	= sanitize( $_POST['school-name'] );
 	$level			= sanitize( $_POST['level'] );
 	$phone			= sanitize( $_POST['phone'] );
-	$remark			= sanitize( $_POST['remark'] );
 
 
-	$run				= $conn->query( "INSERT INTO students (name,level,mykad,residential,school_name,phone_no,remark) VALUES ('$fullname','$level','$mykad','$residential','$school_name','$phone','$remark')" );
+	$run				= $conn->query( "INSERT INTO students (name,level,mykad,residential,school_name,phone_no) VALUES ('$fullname','$level','$mykad','$residential','$school_name','$phone')" );
 
 	if ($run != FALSE) {
 		$_SESSION['noti']	= 'Registration succeed';

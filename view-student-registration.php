@@ -27,7 +27,6 @@
 				<th>Level</th>
 				<th>Residential</th>
 				<th>Phone No.</th>
-				<th>Remark</th>
 				<th>Registered On</th>
 				<th width="170">Actions</th>
 			</tr>
@@ -52,6 +51,9 @@
 					<td>
 						<?php 
 							switch ($row['level']) {
+								case '0':
+									echo '6-year-old';
+									break;
 								case '1':
 									echo 'Std 1';
 									break;
@@ -86,20 +88,22 @@
 									echo 'Form 5';
 									break;
 								case '12':
-									echo 'Form 6L';
+									echo 'Form 6';
 									break;
 								case '13':
-									echo 'Form 6U';
+									echo 'Adults';
 									break;
 								case '14':
-									echo 'Adult';
+									echo 'Japanese';
+									break;		
+								case '14':
+									echo 'Mandarin';
 									break;								
 							}
 						?>
 					</td>
 					<td><?php echo $row['residential'] ?></td>
 					<td><?php echo $row['phone_no'] ?></td>
-					<td><?php echo $row['remark'] ?></td>
 					<td><?php echo date('Y-m-d',strtotime($row['registered_on'])) ?></td>
 					<td>
 						<a href="?m=enroll-student&student=<?php echo $row['mykad'] ?>" class="btn btn-primary text-white hastooltip" title="Enroll student to class"><i class="fas fa-book"></i></a>
