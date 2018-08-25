@@ -8,41 +8,45 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<meta name="author" content="Asrar Art Studio <asrar.artstudio@gmail.com>, Ashraf Misran <ashrafmisran@gmail.com> (60145102864)">
 
+	<!-- Font Awesome -->
+	<script defer src="vendor/fontawesome/js/all.js"></script>
+
+	<!-- jQuery -->
+	<script src="vendor/jquery/jquery.js"></script>
+
+	<!-- popper.js -->
+	<script src="vendor/popper/popper.js"></script>
+
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- DataTables -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-	<!-- Font Awesome -->
-	<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+	<link rel="stylesheet" type="text/css" href="vendor/datatables/datatables.css">
+	<script type="text/javascript" src="vendor/datatables/datatables.js"></script>
 
 	<!-- select2 -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
+	<link href="vendor/select2/select2.min.css" rel="stylesheet" />
+	<script src="vendor/select2/select2.min.js"></script>
+	
 	<!-- moment.js -->
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-
-	<!-- daterangepicker -->
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	<script type="text/javascript" src="vendor/moment/moment.js"></script>
 
 	<!-- chart.js -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+	<script type="text/javascript" src="vendor/chartjs/chart.min.js"></script>
+
+	<!-- daterangepicker -->
+	<script type="text/javascript" src="vendor/daterangepicker/daterangepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
 
 	<!-- fullcalendar -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css">
+	<script type="text/javascript" src="vendor/fullcalendar/fullcalendar.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="vendor/fullcalendar/fullcalendar.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/fullcalendar/fullcalendar.print.css">
 
 	<style type="text/css">
 		body{
-			zoom: 0.75;
+			zoom: 1;
 		}
 	</style>
 
@@ -109,63 +113,58 @@
 
 	?>
 
-	<script type="text/javascript">
-		$('.datatable').DataTable();
+<script type="text/javascript">
+	$('.select2-multiple').select2({
+		placeholder: 'You may choose more than 1',
+		multiple: 'true'
+	});
+</script>
+<script type="text/javascript">
+	var startingDate = 26
+	$('.monthpicker').daterangepicker({
+		"singleDatePicker": false,
+		ranges: {
+	        'This Month': [moment().subtract(1,'month').startOf('month').add(startingDate-1,'day'),moment().startOf('month').add(startingDate-2,'day')],
+	        'Last Month': [moment().subtract(2,'month').startOf('month').add(startingDate-1,'day'),moment().subtract(1,'month').startOf('month').add(startingDate-2,'day')]
+	    }, 
+	    "locale": {
+	        "format": "YYYY-MM-DD"
+	    },
+	    "startDate": moment().subtract(1,'month').startOf('month').add(startingDate-1,'day'),
+	    "endDate": moment().startOf('month').add(startingDate-2,'day')
+	});
+</script>
+<script type="text/javascript">
+	$('.rangepicker').daterangepicker({
+		"singleDatePicker": false,
+		ranges: {
+			'This Quarter': [moment().startOf('quarter'), moment().endOf('quarter')],
+			'Last Quarter': [moment().subtract(1, 'quarter').startOf('quarter'), moment().subtract(1, 'quarter').endOf('quarter')],
+	        'This Year': [moment().startOf('year'), moment().endOf('year')],
+	        'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
+	        'Year 2016': [moment().subtract(2, 'year').startOf('year'), moment().subtract(2, 'year').endOf('year')],
+	        'All time': [moment("20161101","YYYYMMDD"), moment()]
+	    }, 
+	    "locale":{
+	        "format": "MMMM YYYY"
+	    },
+	    "startDate": moment("20161101","YYYYMMDD"),
+	    "endDate": moment()
+	}, function(start, end, label) {
+	  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+	});
+</script>
+<script type="text/javascript">
+	$('.datatable').DataTable();
+</script>
+<script type="text/javascript">
+	$('.hastooltip').tooltip();
+</script>
+<script type="text/javascript">
+	$('.select2').select2();
+</script>
 
-		$('.hastooltip').tooltip();
 
-		$('.select2').select2();
-
-		$('.monthpicker').daterangepicker({
-			"singleDatePicker": true,
-			ranges: {
-		        'Today': [moment(), moment()],
-		        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-		        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-		        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-		        'This Month': [moment().startOf('month'), moment().endOf('month')],
-		        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-		    }, 
-		    "locale": {
-		        "format": "MMMM YYYY"
-		    },
-		    "startDate": "June 2018",
-		});
-
-
-
-		$('.rangepicker').daterangepicker({
-			"singleDatePicker": false,
-			ranges: {
-				'This Quarter': [moment().startOf('quarter'), moment().endOf('quarter')],
-				'Last Quarter': [moment().subtract(1, 'quarter').startOf('quarter'), moment().subtract(1, 'quarter').endOf('quarter')],
-		        'This Year': [moment().startOf('year'), moment().endOf('year')],
-		        'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')],
-		        'Year 2016': [moment().subtract(2, 'year').startOf('year'), moment().subtract(2, 'year').endOf('year')],
-		        'All time': [moment("20161101","YYYYMMDD"), moment()]
-		    }, 
-		    "locale":{
-		        "format": "DD/MM/YYYY"
-		    },
-		    "startDate": moment("20161101","YYYYMMDD"),
-		    "endDate": moment()
-		}, function(start, end, label) {
-		  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-		});
-
-		$('.select2-multiple').select2({
-			placeholder: 'You may choose more than 1',
-			multiple: 'true'
-		});
-
-		$(function() {
-
-			$('.calendar').fullCalendar({
-			  defaultView: 'agendaWeek'
-			});
-		})
-
-	</script>
 
 
 	

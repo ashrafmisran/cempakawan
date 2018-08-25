@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2><a href="?m=enrollment">Enrollment</a> > Enroll Student</h2>
+	<h2><a href="enrollment">Enrollment</a> > Enroll Student</h2>
 	<form class="card my-4" action="controller-enroll-student.php" method="post">
 		<div class="card-body">
 
@@ -10,8 +10,7 @@
 					<label for="student">Student</label>
 				</div>
 				<div class="col-md-9">
-					<select id="student" name="student" class="form-control select2" required readonly>
-						<option selected disabled>Select...</option>
+					<select id="student" name="student[]" class="form-control select2" required readonly multiple>
 						<?php 
 							$sql = "SELECT * FROM students ORDER BY name";
 							$run = $conn->query($sql);
@@ -27,21 +26,21 @@
 					<label for="class">Class</label>
 				</div>
 				<div class="col-md-9">
-					<select id="class" name="class" class="form-control select2-multiple" required multiple>
+					<select id="class" name="class[]" class="form-control select2" multiple>
 						<optgroup label="Group">
 							<?php 
-								$sql = "SELECT * FROM classes WHERE is_group = 1 ORDER BY subject";
+								$sql = "SELECT *,(SELECT name FROM levels WHERE id = classes.level) AS level_name FROM classes WHERE is_group = 1 ORDER BY subject";
 								$run = $conn->query($sql);
 								while ($row = $run->fetch_assoc()) { ?>
-									<option value="<?php echo $row['id'] ?>"><?php echo $row['subject'] ?> &lt;<?php echo $row['level']; ?>&gt;</option>
+									<option value="<?php echo $row['id'] ?>"><?php echo $row['subject'] ?> (<?php echo $row['level_name']; ?>) - Kumpulan <?php echo $row['group_no'] ?></option>
 							<?php } ?>
 						</optgroup>	
 						<optgroup label="Private">
 							<?php 
-								$sql = "SELECT * FROM classes WHERE is_group = 0 ORDER BY subject";
+								$sql = "SELECT *,(SELECT name FROM levels WHERE id = classes.level) AS level_name FROM classes WHERE is_group = 0 ORDER BY subject";
 								$run = $conn->query($sql);
 								while ($row = $run->fetch_assoc()) { ?>
-									<option value="<?php echo $row['id'] ?>"><?php echo $row['subject'] ?> &lt;<?php echo $row['level']; ?>&gt;</option>
+									<option value="<?php echo $row['id'] ?>"><?php echo $row['subject'] ?> (<?php echo $row['level_name']; ?>) - Kumpulan <?php echo $row['group_no'] ?></option>
 							<?php } ?>
 						</optgroup>	
 					</select>
@@ -51,7 +50,7 @@
 		</div>
 		<div class="card-footer">
 			<button type="submit" class="btn btn-primary">Register student</button>
-			<a href="?m=student-registration" class="btn btn-danger">Cancel</a>
+			<a href="enrollment" class="btn btn-danger">Cancel</a>
 		</div>
 	</form>
 </main>

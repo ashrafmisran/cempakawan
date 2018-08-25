@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2><a href="?m=tutors">Tutors</a> > Add New Tutor</h2>
+	<h2><a href="tutors">Tutors</a> > Add New Tutor</h2>
 	<form class="card my-4" action="controller-add-tutor.php" method="post">
 		<div class="card-body">
 
@@ -32,7 +32,7 @@
 		</div>
 		<div class="card-footer">
 			<button type="submit" class="btn btn-primary">Add tutor</button>
-			<a href="?m=tutors" class="btn btn-danger">Cancel</a>
+			<a href="tutors" class="btn btn-danger">Cancel</a>
 		</div>
 	</form>
 </main>

@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2><a href="?m=classes">Classes</a> > Add new class</h2>
+	<h2><a href="classes-list">Classes</a> > Add new class</h2>
 	<form action="controller-add-class.php" method="post">
 		<div class="card my-4">
 			<div class="card-body">
@@ -28,21 +28,29 @@
 					</div>
 					<div class="col-md-9">
 						<select id="level" name="level" class="form-control" required>
-							<option>Standard 1</option>
-							<option>Standard 2</option>
-							<option>Standard 3</option>
-							<option>Standard 4</option>
-							<option>Standard 5</option>
-							<option>Standard 6</option>
-							<option>Form 1</option>
-							<option>Form 2</option>
-							<option>Form 3</option>
-							<option>Form 4</option>
-							<option>Form 5</option>
-							<option>Form 6 Lower</option>
-							<option>Form 6 Upper</option>
-							<option>Adults</option>
+							<option value="1">6-year-old</option>
+							<option value="2">Standard 1</option>
+							<option value="3">Standard 2</option>
+							<option value="4">Standard 3</option>
+							<option value="5">Standard 4</option>
+							<option value="6">Standard 5</option>
+							<option value="7">Standard 6</option>
+							<option value="8">Form 1</option>
+							<option value="9">Form 2</option>
+							<option value="10">Form 3</option>
+							<option value="11">Form 4</option>
+							<option value="12">Form 5</option>
+							<option value="13">Form 6</option>
+							<option value="14">Adults</option>
 						</select>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<label for="tutor">Group</label>
+					</div>
+					<div class="col-md-9">
+						<input class="form-control" type="number" name="group" value="1" min="1" required>
 					</div>
 				</div>
 				<div class="row mt-2">
@@ -66,13 +74,13 @@
 						<label for="tutor-rate">Tutor's Rate</label>
 					</div>
 					<div class="col-md-9">
-						<input id="tutor-rate" name="tutor-rate" class="form-control" required min="20" step="5" type="number">
+						<input id="tutor-rate" name="tutor-rate" class="form-control" required min="20" step="5" type="number" value="20">
 					</div>
 				</div>
 			</div>
 			<div class="card-footer">
 				<button type="submit" class="btn btn-primary">Add class</button>
-				<a href="?m=classes" class="btn btn-danger">Cancel</a>
+				<a href="classes-list" class="btn btn-danger">Cancel</a>
 			</div>
 		</div>
 	</form>

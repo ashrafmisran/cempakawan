@@ -24,7 +24,7 @@
 
 			<div class="my-2">
 				<a href="controller-logout.php" class="mx-4">Use other account</a><br>
-				<a href="?m=forgot-password" class="mx-4">Forgot password</a>	
+				<a href="forgot-password" class="mx-4">Forgot password</a>	
 			</div>
 		</div>
 	</form>

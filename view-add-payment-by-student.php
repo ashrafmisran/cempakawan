@@ -18,10 +18,12 @@
 					<select id="student" name="student" class="form-control select2" required data-placeholder="Please select...">
 						<option disabled selected>Select...</option>
 						<?php 
-							$sql = "SELECT * FROM students ORDER BY name";
+							$sql = "SELECT *, 
+						(SELECT (sum(transactions.debit)-sum(transactions.credit)) FROM transactions WHERE account = 11 AND transactions.subaccount = students.id AND type = 'Student' ) AS debt,
+						(SELECT (sum(transactions.credit)-sum(transactions.debit)) FROM transactions WHERE account = 6 AND transactions.subaccount = students.id AND type = 'Student' ) AS prepayment FROM students ORDER BY name";
 							$run = $conn->query($sql);
 							while ($row = $run->fetch_assoc()) { ?>
-								<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?> &lt;<?php echo $row['mykad']; ?>&gt;</option>
+								<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?> &lt;<?php echo $row['mykad']; ?>&gt; <?php echo $row['prepayment'] ?></option>
 						<?php } ?>
 					</select>
 				</div>
@@ -37,7 +39,7 @@
 							$sql = "SELECT * FROM cash_accounts";
 							$run = $conn->query($sql);
 							while ($row = $run->fetch_assoc()) { ?>
-								<option value="<?php echo $row['id'] ?>"><?php echo $row['account_name'] ?> &lt;<?php echo $row['account_no']; ?>&gt;</option>
+								<option value="<?php echo $row['id'] ?>"><?php echo $row['account_name'] ?></option>
 						<?php } ?>
 					</select>
 				</div>

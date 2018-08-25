@@ -34,8 +34,8 @@
 			?>
 
 			<div class="my-2">
-				<a href="?m=" class="mx-4">I have been registered. I want to log In</a><br>
-				<a href="?m=forgot-password" class="mx-4">Forgot password</a>	
+				<a href="index.php" class="mx-4">I have been registered. I want to log In</a><br>
+				<a href="forgot-password" class="mx-4">Forgot password</a>	
 			</div>
 		</div>
 	</form>

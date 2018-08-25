@@ -11,7 +11,7 @@
 					'mr-1'
 				)
 			);
-			$addstudent->sethyperlink('?m=add-student');
+			$addstudent->sethyperlink('add-student');
 			$addstudent->seticon('plus');
 			$addstudent->show();
 		?>
@@ -106,7 +106,7 @@
 					<td><?php echo $row['phone_no'] ?></td>
 					<td><?php echo date('Y-m-d',strtotime($row['registered_on'])) ?></td>
 					<td>
-						<a href="?m=enroll-student&student=<?php echo $row['mykad'] ?>" class="btn btn-primary text-white hastooltip" title="Enroll student to class"><i class="fas fa-book"></i></a>
+						<!-- <a href="?m=enroll-student&student=<?php echo $row['mykad'] ?>" class="btn btn-primary text-white hastooltip" title="Enroll student to class"><i class="fas fa-book"></i></a> -->
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary hastooltip" data-toggle="modal" data-target="#student-detail-<?php echo($row['id']) ?>" title="View"><i class="fas fa-eye"></i></button>
 							<button class="btn btn-danger hastooltip" data-toggle="modal" data-id="<?php echo($row['id']) ?>" data-target="#modal-remove-student" title="Delete student registration"><i class="fas fa-trash-alt"></i></button>
@@ -172,7 +172,7 @@
 											<p>Outstanding debt</p>
 										</div>
 										<div class="col">
-											<p>RM<?php if($row['debt']==NULL){$row['debt']=0;} echo($row['debt']) ?> <a class="btn btn-sm btn-outline-primary" href="?m=add-payment-by-student&student=<?php echo($row['id']) ?>">Pay</a></p>
+											<p>RM<?php if($row['debt']==NULL){$row['debt']=0;} echo($row['debt']) ?> <a class="btn btn-sm btn-outline-primary" href="add-payment-by-student&student=<?php echo($row['id']) ?>">Pay</a></p>
 										</div>
 									</div>
 								</div>
@@ -210,7 +210,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-				<a href="controller-remove-student&id=" class="btn btn-danger">Confirm delete</a>
+				<a id="delete-link" href="#" class="btn btn-danger">Confirm delete</a>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
@@ -221,5 +221,14 @@
 	$('#student-detail-tab-button .nav-link').click(function(){
 		$(this).parent().siblings().children().removeClass('active')
 		$(this).addClass('active').siblings().removeClass('d-none')
+	})
+</script>
+
+<script type="text/javascript">
+	$('#modal-remove-student').on('shown.bs.modal',function(){
+		var btn = event.relatedEvent;
+		var id = btn.data('id')
+		alert(id)
+		$('#delete-link').prop('href','controller-remove-student.php?id='+id)
 	})
 </script>

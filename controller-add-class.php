@@ -7,9 +7,10 @@
 	$level   		= sanitize( $_POST['level'] );
 	$tutor 			= sanitize( $_POST['tutor'] );
 	$tutor_rate	    = sanitize( $_POST['tutor-rate'] );
+	$group 			= sanitize( $_POST['group'] );
 
 	
-	$sql = "INSERT INTO classes (is_group,subject,level,tutor,tutor_rate) VALUES ($type,'$subject','$level','$tutor',$tutor_rate)";
+	$sql = "INSERT INTO classes (is_group,subject,level,group_no,tutor,tutor_rate) VALUES ($type,'$subject','$level',$group,'$tutor',$tutor_rate)";
 	$run = $conn->query($sql);
 
 	if ($run != FALSE) {

@@ -1,7 +1,7 @@
 <main class="m-2">
 	<h2>Enrollment</h2>
 	<div>
-		<a href="?m=enroll-student" class="btn btn-primary my-2">Enroll student</a>
+		<a href="enroll-student" class="btn btn-primary my-2">Enroll student</a>
 	</div>
 	<table class="table table-hover table-striped w-100 datatable">
 		<thead>
@@ -19,7 +19,7 @@
 		<tbody>
 			<?php
 				$i = 0;
-				$run = $conn->query("SELECT *,(SELECT name FROM students WHERE students.id = enrolls.student) as name,(SELECT subject FROM classes WHERE classes.id = enrolls.class) AS subject,(SELECT level FROM classes WHERE classes.id = enrolls.class) AS level FROM enrolls");
+				$run = $conn->query("SELECT *,(SELECT name FROM students WHERE students.id = enrolls.student) as name,(SELECT subject FROM classes WHERE classes.id = enrolls.class) AS subject,(SELECT name FROM levels WHERE id = (SELECT level FROM classes WHERE classes.id = enrolls.class)) AS level_name FROM enrolls");
 				while ( $row = $run->fetch_assoc() ){
 					$i++;
 			?>
@@ -29,7 +29,7 @@
 					<td><?php echo $row['name'] ?></td>
 					<td>CLS<?php echo 1000+$row['class'] ?></td>
 					<td><?php echo $row['subject'] ?></td>
-					<td><?php echo $row['level'] ?></td>
+					<td><?php echo $row['level_name'] ?></td>
 					<td><?php echo $row['registered_on'] ?></td>
 					<td>
 						<div class="btn-group">

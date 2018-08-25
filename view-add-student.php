@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2><a href="?m=student-registration">Students Registration</a> > Add New Student</h2>
+	<h2><a href="student-registration">Students Registration</a> > Add New Student</h2>
 	<form class="card my-4" action="controller-add-student.php" method="post">
 		<div class="card-body">
 
@@ -79,7 +79,7 @@
 		</div>
 		<div class="card-footer">
 			<button type="submit" class="btn btn-primary">Register student</button>
-			<a href="?m=student-registration" class="btn btn-danger">Cancel</a>
+			<a href="student-registration" class="btn btn-danger">Cancel</a>
 		</div>
 	</form>
 </main>

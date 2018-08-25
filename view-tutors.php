@@ -1,7 +1,7 @@
 <main class="m-2">
 	<h2>Tutors</h2>
 	<div>
-		<a href="?m=add-tutor" class="btn btn-primary my-2">Add new tutor</a>
+		<a href="add-tutor" class="btn btn-primary my-2">Add new tutor</a>
 	</div>
 	<table class="table table-hover table-striped w-100 datatable">
 		<thead>

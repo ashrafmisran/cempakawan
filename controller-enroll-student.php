@@ -2,11 +2,16 @@
 
 	include 'function.php';
 
-	$student	 		= sanitize( $_POST['student'] );
-	$class   		= sanitize( $_POST['class'] );
+	$students	 		= $_POST['student'];
+	$classes   	 		= $_POST['class'];
 
-	$sql = "INSERT INTO enrolls (student,class) VALUES ($student,$class)";
-	$run = $conn->query($sql);
+	foreach ($students as $student) {
+		foreach ($classes as $class) {
+			$sql = "INSERT INTO enrolls (student,class) VALUES ($student,$class)";
+			$run = $conn->query($sql);
+		}
+	}
+
 
 	if ($run != FALSE) {
 		$_SESSION['noti']	= 'Registration succeed';

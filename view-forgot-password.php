@@ -12,8 +12,8 @@
 		<div class="card-footer text-center">
 			<button type="submit" class="btn btn-primary">Reset password</button>
 			<div class="my-2">
-				<a href="?m=register" class="mx-4">I have not been registered before. I want to register as new user</a><br>
-				<a href="?m=" class="mx-4">I have remember the password. I want to log In</a>	
+				<a href="register" class="mx-4">I have not been registered before. I want to register as new user</a><br>
+				<a href="index.php" class="mx-4">I have remember the password. I want to log In</a>	
 			</div>
 		</div>
 	</form>

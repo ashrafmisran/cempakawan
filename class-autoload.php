@@ -1,6 +1,6 @@
 <?php
 
-	$dir = 'classes/';
+	$dir = 'class/';
 
 	if (is_dir($dir)){
 	  if ($dh = opendir($dir)){
@@ -8,7 +8,7 @@
 			if($file == '.' OR $file == '..'){
 				continue;
 			}
-			include "classes/$file";
+			include "class/$file";
 	    }
 	    closedir($dh);
 	  }
