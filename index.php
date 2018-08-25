@@ -50,6 +50,8 @@
 		}
 	</style>
 
+	<link rel="shortcut icon" href="img/favicon.png" >
+
 </head>
 <body>
 
