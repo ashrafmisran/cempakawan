@@ -1,8 +1,8 @@
 <?php
 	$servername = 'localhost';
-	$username	= 'root';
-	$password	= '';
-	$dbname		= 'cempakawan_v2';
+	$username	= 'nilalcom_ashrafm';
+	$password	= 'Mukmin11?';
+	$dbname		= 'nilalcom_cempakawan_dev';
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
