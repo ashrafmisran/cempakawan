@@ -10,12 +10,12 @@
 	$group 			= sanitize( $_POST['group'] );
 
 	
-	$sql = "INSERT INTO classes (is_group,subject,level,group_no,tutor,tutor_rate) VALUES ($type,'$subject','$level',$group,'$tutor',$tutor_rate)";
+	$sql = "INSERT INTO classes (is_group,subject,level,group_no,tutor,tutor_rate,branch) VALUES ($type,'$subject','$level',$group,'$tutor',$tutor_rate,".$_SESSION['branch_no'].")";
 	$run = $conn->query($sql);
 
 	if ($run != FALSE) {
 		$_SESSION['noti']	= 'Registration succeed';
-		header( 'Location: index.php?m=classes');
+		header( 'Location: classes-list');
 	}else{
 		$_SESSION['noti']	= 'Registration failed';
 		header( 'Location: '.$_SERVER['HTTP_REFERER'] );

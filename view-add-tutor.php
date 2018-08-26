@@ -28,6 +28,22 @@
 					<input id="phone" type="text" name="phone" class="form-control" required>
 				</div>
 			</div>
+			<div class="row mt-2">
+				<div class="col-md-3">
+					<label for="bank">Bank</label>
+				</div>
+				<div class="col-md-9">
+					<input id="bank" type="text" name="bank" class="form-control" required>
+				</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col-md-3">
+					<label for="acc-no">Phone No.</label>
+				</div>
+				<div class="col-md-9">
+					<input id="acc-no" type="text" name="acc-no" class="form-control" required>
+				</div>
+			</div>
 			
 		</div>
 		<div class="card-footer">

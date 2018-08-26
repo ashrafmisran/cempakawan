@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2><a href="classes-list"><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Classes</a> > Add new class</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > <a href="classes-list">Classes</a> > Add new class</h2>
 	<form action="controller-add-class.php" method="post">
 		<div class="card my-4">
 			<div class="card-body">
@@ -53,6 +53,39 @@
 						<input class="form-control" type="number" name="group" value="1" min="1" required>
 					</div>
 				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<label for="day">Day</label>
+					</div>
+					<div class="col-md-9">
+						<select class="form-control" type="select" name="day" required>
+							<option>Sunday</option>
+							<option>Monday</option>
+							<option>Tuesday</option>
+							<option>Wednesday</option>
+							<option>Thursday</option>
+							<option>Friday</option>
+							<option>Saturday</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<label for="tutor">Starts on</label>
+					</div>
+					<div class="col-md-9">
+						<input class="form-control" type="time" name="start" required>
+					</div>
+				</div>
+				<div class="row mt-2">
+					<div class="col-md-3">
+						<label for="tutor">Ends on</label>
+					</div>
+					<div class="col-md-9">
+						<input class="form-control" type="time" name="end" required>
+					</div>
+				</div>
+				<hr>
 				<div class="row mt-2">
 					<div class="col-md-3">
 						<label for="tutor">Tutor</label>
