@@ -41,7 +41,7 @@ $backup_file = getLatestFile($folder);
   }
 }*/
 
-$dir = 'backup/'.$backup_file;
+$dir = $backup_file;
 echo "<h3>Restoring database from `<code>{$dir}</code>`</h3>";
 exec("mysqldump.exe --user={$user} --password={$pass} --host={$host} {$database} < $dir", $output);
 var_dump($output);
