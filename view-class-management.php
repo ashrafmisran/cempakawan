@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Class Management</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Class Management</h2>
 	<div>
 		<a href="add-student" class="btn btn-primary my-2">Enroll student</a>
 	</div>

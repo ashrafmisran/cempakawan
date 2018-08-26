@@ -6,4 +6,6 @@
 	function sanitize($str){
 		return $str;
 	}
+
+	date_default_timezone_set('Asia/Kuala_Lumpur');
 ?>

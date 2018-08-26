@@ -5,7 +5,7 @@
 	</button>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	<ul class="navbar-nav mr-auto">
+	<!--ul class="navbar-nav mr-auto">
 		<li class="nav-item active">
 		<a class="nav-link" href=" index.php">Home <span class="sr-only">(current)</span></a>
 		</li>
@@ -57,7 +57,7 @@
 		<li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">User</a>
 		<div class="dropdown-menu">
-			<!-- <a class="dropdown-item" href="user-profile">Profile</a> -->
+			< <a class="dropdown-item" href="user-profile">Profile</a> >
 			<a class="dropdown-item" href="change-password">Change Password</a>
 			<a class="dropdown-item" href="locked-user">Lock</a>
 			<div role="separator" class="dropdown-divider"></div>
@@ -65,7 +65,7 @@
 		</div>
 		</li>
 	</ul>
-	<!-- <form class="form-inline my-2 my-lg-0">
+	<form class="form-inline my-2 my-lg-0">
 		<select class="form-control form-control-lg mr-2 select2" placeholder="Search" aria-label="Search">
 		<option selected disabled>Search anything here...</option>
 		<optgroup label="Student">

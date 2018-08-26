@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Financial Performance</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Financial Performance</h2>
 
 	<div class="container-fluid">
 		<div class="row mb-4">

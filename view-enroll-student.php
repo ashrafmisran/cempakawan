@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2><a href="enrollment">Enrollment</a> > Enroll Student</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > <a href="enrollment">Enrollment</a> > Enroll Student</h2>
 	<form class="card my-4" action="controller-enroll-student.php" method="post">
 		<div class="card-body">
 

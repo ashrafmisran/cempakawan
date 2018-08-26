@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Attendance</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Attendance</h2>
 	<div class="row bg-secondary my-4">
 		<div class="col">
 			<form class="p-4 my-4" action="controller-record-attendance.php" method="post">

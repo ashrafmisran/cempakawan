@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Classes</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Classes</h2>
 	<div>
 		<a href="add-class" class="btn btn-primary my-2">Add new class</a>
 	</div>

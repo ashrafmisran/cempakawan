@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Tutors</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Tutors</h2>
 	<div>
 		<a href="add-tutor" class="btn btn-primary my-2">Add new tutor</a>
 	</div>

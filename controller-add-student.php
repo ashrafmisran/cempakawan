@@ -10,7 +10,7 @@
 	$phone			= sanitize( $_POST['phone'] );
 
 
-	$run				= $conn->query( "INSERT INTO students (name,level,mykad,residential,school_name,phone_no) VALUES ('$fullname','$level','$mykad','$residential','$school_name','$phone')" );
+	$run				= $conn->query( "INSERT INTO students (name,level,mykad,residential,school_name,phone_no,branch) VALUES ('$fullname','$level','$mykad','$residential','$school_name','$phone',".$_SESSION['branch_no'].")" );
 
 	if ($run != FALSE) {
 		$_SESSION['noti']	= 'Registration succeed';

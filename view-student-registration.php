@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Students Registration</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Students Registration</h2>
 	<div>
 		<?php
 			$addstudent = new Anchor;
@@ -36,7 +36,7 @@
 				$sql = "SELECT *, 
 						(SELECT (sum(transactions.debit)-sum(transactions.credit)) FROM transactions WHERE account = 11 AND transactions.subaccount = students.id AND type = 'Student' ) AS debt,
 						(SELECT (sum(transactions.credit)-sum(transactions.debit)) FROM transactions WHERE account = 6 AND transactions.subaccount = students.id AND type = 'Student' ) AS prepayment
-						FROM students ORDER BY id DESC";
+						FROM students WHERE branch = ".$_SESSION['branch_no']." ORDER BY id DESC";
 				$run = $conn->query($sql);
 				$i = 0;
 				while ( $row = $run->fetch_assoc() ){
@@ -109,7 +109,7 @@
 						<!-- <a href="?m=enroll-student&student=<?php echo $row['mykad'] ?>" class="btn btn-primary text-white hastooltip" title="Enroll student to class"><i class="fas fa-book"></i></a> -->
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary hastooltip" data-toggle="modal" data-target="#student-detail-<?php echo($row['id']) ?>" title="View"><i class="fas fa-eye"></i></button>
-							<button class="btn btn-danger hastooltip" data-toggle="modal" data-id="<?php echo($row['id']) ?>" data-target="#modal-remove-student" title="Delete student registration"><i class="fas fa-trash-alt"></i></button>
+							<button class="btn btn-danger hastooltip" data-toggle="modal" data-studentid="<?php echo($row['id']) ?>" data-target="#modal-remove-student" title="Delete student registration"><i class="fas fa-trash-alt"></i></button>
 						</div>
 					</td>
 				</tr>
@@ -225,10 +225,9 @@
 </script>
 
 <script type="text/javascript">
-	$('#modal-remove-student').on('shown.bs.modal',function(){
-		var btn = event.relatedEvent;
-		var id = btn.data('id')
-		alert(id)
-		$('#delete-link').prop('href','controller-remove-student.php?id='+id)
+	$('#modal-remove-student').on('show.bs.modal',function(event){
+		var btn = $(event.relatedTarget);
+		var id = btn.data('studentid')
+		$('#delete-link').attr('href','controller-remove-student.php?id='+id)
 	})
 </script>

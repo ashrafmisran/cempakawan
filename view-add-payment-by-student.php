@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Payment by Students</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Payment by Students</h2>
 	<div class="m-4">
 		<form action="controller-receive-payment.php" method="post">
 			<div class="row mb-1">

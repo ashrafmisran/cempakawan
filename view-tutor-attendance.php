@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Timetable</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Timetable</h2>
 	<table class="table">
 		<thead>
 			<tr>

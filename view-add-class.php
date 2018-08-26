@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2><a href="classes-list">Classes</a> > Add new class</h2>
+	<h2><a href="classes-list"><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Classes</a> > Add new class</h2>
 	<form action="controller-add-class.php" method="post">
 		<div class="card my-4">
 			<div class="card-body">

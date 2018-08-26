@@ -1,5 +1,5 @@
 <main class="m-2">
-	<h2>Enrollment</h2>
+	<h2><a href="branch-menu"><?php echo($_SESSION['branch']) ?></a> > Enrollment</h2>
 	<div>
 		<a href="enroll-student" class="btn btn-primary my-2">Enroll student</a>
 	</div>
@@ -19,7 +19,7 @@
 		<tbody>
 			<?php
 				$i = 0;
-				$run = $conn->query("SELECT *,(SELECT name FROM students WHERE students.id = enrolls.student) as name,(SELECT subject FROM classes WHERE classes.id = enrolls.class) AS subject,(SELECT name FROM levels WHERE id = (SELECT level FROM classes WHERE classes.id = enrolls.class)) AS level_name FROM enrolls");
+				$run = $conn->query("SELECT *,(SELECT name FROM students WHERE students.id = enrolls.student) as name,(SELECT subject FROM classes WHERE classes.id = enrolls.class) AS subject,(SELECT name FROM levels WHERE id = (SELECT level FROM classes WHERE classes.id = enrolls.class)) AS level_name FROM enrolls WHERE enrolls.student IN (SELECT id FROM students WHERE branch = ".$_SESSION['branch_no'].")");
 				while ( $row = $run->fetch_assoc() ){
 					$i++;
 			?>
