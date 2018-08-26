@@ -2,9 +2,9 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$database = 'cempakawan_v2';
-$user = 'root';
-$pass = '';
+$database = 'nilalcom_cempakawan_dev';
+$user = 'nilalcom_ashrafm';
+$pass = 'Mukmin11?';
 $host = 'localhost';
 $folder = 'backup';
 if (is_dir($folder)){
