@@ -7,14 +7,39 @@ $user = 'nilalcom_ashrafm';
 $pass = 'Mukmin11?';
 $host = 'localhost';
 $folder = 'backup';
-if (is_dir($folder)){
+
+function getLatestFile($directoryPath) {
+    $directoryPath = rtrim($directoryPath, '/');
+
+    $max = ['path' => null, 'timestamp' => 0];
+
+    foreach (scandir($directoryPath, SCANDIR_SORT_NONE) as $file) {
+        $path = $directoryPath . '/' . $file;
+
+        if (!is_file($path)) {
+            continue;
+        }
+
+        $timestamp = filemtime($path);
+        if ($timestamp > $max['timestamp']) {
+            $max['path'] = $path;
+            $max['timestamp'] = $timestamp;
+        }
+    }
+
+    return $max['path'];
+}
+
+$backup_file = getLatestFile($folder);
+
+/*if (is_dir($folder)){
   if ($dh = opendir($folder)){
     while (($file = readdir($dh)) !== false){
       $backup_file = $file;
     }
     closedir($dh);
   }
-}
+}*/
 
 $dir = 'backup/'.$backup_file;
 echo "<h3>Restoring database from `<code>{$dir}</code>`</h3>";
