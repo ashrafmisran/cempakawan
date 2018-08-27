@@ -1,7 +1,7 @@
 <?php
 
-header('Content-Type: application/json');
 include 'function.php';
+header('Content-Type: application/json');
 $data = array();
 
 
@@ -36,8 +36,12 @@ $date_from = date("Y-m-d", $date_from);
 for ($i=0; $i < count($datelist); $i++) { 
 
 	$date = $datelist[$i];
-
-	$sql = "SELECT '$date' AS date, (SELECT count(*) FROM `students` WHERE `registered_on` <= '$date 23:59:59' AND (quit_on > '$date 23:59:59' OR quit_on = '0000-00-00 00:00:00')) AS active,(SELECT count(DISTINCT subaccount) FROM `transactions` WHERE `description` = 'Receive payment from student' AND `transactions`.`timestamp` between '$date_from 00:00:00' AND '$date 23:59:59') AS paid_students,(SELECT count(*) FROM `students` WHERE `registered_on` <= '$date 23:59:59' AND (quit_on > '$date 23:59:59' OR quit_on = '0000-00-00 00:00:00')) AS amount_expected,(SELECT sum(debit) FROM `transactions` WHERE description = 'Receive payment from student' AND `transactions`.`timestamp` between '$date_from 00:00:00' AND '$date 23:59:59') AS amount_paid";
+    $branch_no = $_SESSION['branch_no'];
+	$sql = "SELECT '$date' AS date, 
+            (SELECT count(*) FROM `students` WHERE `registered_on` <= '$date 23:59:59' AND (quit_on > '$date 23:59:59' OR quit_on = '0000-00-00 00:00:00') AND branch = $branch_no) AS active, 
+            (SELECT count(DISTINCT subaccount) FROM `transactions` WHERE `description` = 'Receive payment from student' AND `transactions`.`timestamp` between '$date_from 00:00:00' AND '$date 23:59:59' AND type = 'Student' AND transactions.subaccount IN (SELECT id FROM students WHERE branch = $branch_no)) AS paid_students, 
+            (SELECT count(*) FROM `students` WHERE `registered_on` <= '$date 23:59:59' AND (quit_on > '$date 23:59:59' OR quit_on = '0000-00-00 00:00:00')  AND branch = $branch_no) AS amount_expected, 
+            (SELECT sum(debit) FROM `transactions` WHERE description = 'Receive payment from student' AND `transactions`.`timestamp` between '$date_from 00:00:00' AND '$date 23:59:59') AS amount_paid";
 	$run = $conn->query($sql);
 	$row = $run->fetch_assoc();
 

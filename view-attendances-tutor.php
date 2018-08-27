@@ -25,11 +25,11 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6 text-center">
+		<div id="clock-in-time-group" class="col-md-6 text-center d-none">
 			<button id="btn-clock-in" class="mt-4 btn btn-lg btn-primary" type="button">Clock in</button>
 			<p class="text-muted">Clock in on : <br><input id="clock-in-time" readonly style="border: 0px; text-align: center;"></p>
 		</div>
-		<div class="col-md-6 text-center">
+		<div id="clock-out-time-group" class="col-md-6 text-center d-none">
 			<button id="btn-clock-out" class="mt-4 btn btn-lg btn-danger" type="button">Clock out</button>
 			<p class="text-muted">Clock out on : <br><input id="clock-out-time" readonly style="border: 0px; text-align: center;"></p>
 		</div>
@@ -59,6 +59,7 @@
 	$('#name').on('change',function(){
 		var tutorID = $(this).val()
 		$('#class').children('option').remove()
+		$('#class').append('<option>Select class...</option>')
 
 		$.ajax({
 			url: 'data-classes-list.php?id='+tutorID,
@@ -76,6 +77,27 @@
 	$('#class').on('change', function(){
 		var rate = $('#class option:selected').attr('data-pay')
 		$('#result-rate').text(rate)
+
+		var tutorID = $('#name option:selected').val()
+		var classID = $('#class option:selected').val()
+		$.ajax({
+			url: 'data-attendances-tutor.php?tutor='+tutorID+'&class='+classID,
+			method: 'get',
+			success: function(data){
+				if(data.length == 0){
+					$('#clock-in-time-group').removeClass('d-none')
+				}else if(data.length > 0){
+					var timein = data[0]['timein']
+					timein = timein.split(' ')
+					timein = timein[1].split(':')
+					timein = timein[0]+':'+timein[1]+':'+timein[2]
+					$('#clock-in-time-group').removeClass('d-none')
+					$('#clock-in-time-group').find('button').attr('disabled',true)
+					$('#clock-in-time-group').find('input').val(timein)
+					$('#clock-out-time-group').removeClass('d-none')
+				}
+			}
+		})
 	})
 </script>
 
@@ -84,6 +106,15 @@
 		var time = new Date()
 
 		$(this).parent().find('#clock-in-time,#clock-out-time').val(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds())
+
+		//Update in database
+		var tutorID = $('#name option:selected').val()
+		var classID = $('#class option:selected').val()
+		$.ajax({
+			url: 'controller-update-attendances-tutors.php?tutor='+tutorID+'&class='+classID,
+			method: 'get',
+			success: alert('Updated')
+		})
 
 		if ( $('#clock-in-time').val() != '' && $('#clock-out-time').val() != '' ) {
 			var clockInTime = $('#clock-in-time').val().split(':');

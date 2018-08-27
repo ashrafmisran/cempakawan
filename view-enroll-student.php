@@ -12,7 +12,7 @@
 				<div class="col-md-9">
 					<select id="student" name="student[]" class="form-control select2" required readonly multiple>
 						<?php 
-							$sql = "SELECT * FROM students ORDER BY name";
+							$sql = "SELECT * FROM students WHERE branch = ".$_SESSION['branch_no']." AND active = 1 ORDER BY name";
 							$run = $conn->query($sql);
 							while ($row = $run->fetch_assoc()) { ?>
 								<option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?> &lt;<?php echo $row['mykad']; ?>&gt;</option>
@@ -29,7 +29,7 @@
 					<select id="class" name="class[]" class="form-control select2" multiple>
 						<optgroup label="Group">
 							<?php 
-								$sql = "SELECT *,(SELECT name FROM levels WHERE id = classes.level) AS level_name FROM classes WHERE is_group = 1 ORDER BY subject";
+								$sql = "SELECT *,(SELECT name FROM levels WHERE id = classes.level) AS level_name FROM classes WHERE branch = ".$_SESSION['branch_no']." AND is_group = 1 AND active = 1 ORDER BY subject";
 								$run = $conn->query($sql);
 								while ($row = $run->fetch_assoc()) { ?>
 									<option value="<?php echo $row['id'] ?>"><?php echo $row['subject'] ?> (<?php echo $row['level_name']; ?>) - Kumpulan <?php echo $row['group_no'] ?></option>
@@ -37,7 +37,7 @@
 						</optgroup>	
 						<optgroup label="Private">
 							<?php 
-								$sql = "SELECT *,(SELECT name FROM levels WHERE id = classes.level) AS level_name FROM classes WHERE is_group = 0 ORDER BY subject";
+								$sql = "SELECT *,(SELECT name FROM levels WHERE id = classes.level) AS level_name FROM classes WHERE branch = ".$_SESSION['branch_no']." AND is_group = 0 AND active = 1 ORDER BY subject";
 								$run = $conn->query($sql);
 								while ($row = $run->fetch_assoc()) { ?>
 									<option value="<?php echo $row['id'] ?>"><?php echo $row['subject'] ?> (<?php echo $row['level_name']; ?>) - Kumpulan <?php echo $row['group_no'] ?></option>

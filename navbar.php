@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
 	<a class="navbar-brand text-white text-center" href="index.php">Cempakawan</a>
+	Hi, <?php echo($_SESSION['user']['fullname']) ?>! <a href="controller-logout.php" class="ml-2 btn btn-sm btn-danger">Log out</a>
 </nav>
 <!-- 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">

@@ -126,14 +126,13 @@
 	$('.monthpicker').daterangepicker({
 		"singleDatePicker": false,
 		ranges: {
-	        'This Month': [moment().subtract(1,'month').startOf('month').add(startingDate-1,'day'),moment().startOf('month').add(startingDate-2,'day')],
-	        'Last Month': [moment().subtract(2,'month').startOf('month').add(startingDate-1,'day'),moment().subtract(1,'month').startOf('month').add(startingDate-2,'day')]
+	        'This Month': [moment().subtract(25,'day').startOf('month').add(startingDate-1,'day'),moment().subtract(25,'day').add(1,'month').startOf('month').add(startingDate-2,'day')]
 	    }, 
 	    "locale": {
 	        "format": "YYYY-MM-DD"
 	    },
-	    "startDate": moment().subtract(1,'month').startOf('month').add(startingDate-1,'day'),
-	    "endDate": moment().startOf('month').add(startingDate-2,'day')
+	    "startDate": moment().subtract(25,'day').startOf('month').add(startingDate-1,'day'),
+	    "endDate": moment().subtract(25,'day').add(1,'month').startOf('month').add(startingDate-2,'day')
 	});
 </script>
 <script type="text/javascript">

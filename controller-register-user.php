@@ -7,8 +7,12 @@
 		$email 		= sanitize($_POST['email']);
 		$password	= md5( sanitize($_POST['password']) );
 		$fullname	= sanitize($_POST['fullname']);
+		
 
 		$run 		= $conn->query("INSERT INTO users(email,password,fullname) VALUES( '$email' , '$password' , '$fullname' )" );
+
+
+		
 
 		if( $run != FALSE ){
 

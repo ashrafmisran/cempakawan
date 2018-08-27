@@ -14,13 +14,13 @@
 				<th>Tutor</th>
 				<th>Size</th>
 				<th>Time</th>
-				<th width="170">Actions</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
 				$i   = 0;
-				$run = $conn->query("SELECT *,(SELECT count(*) FROM enrolls WHERE enrolls.class = classes.id) AS no_student,(SELECT name FROM tutors WHERE tutors.id = classes.tutor) AS tutor_name,(SELECT name FROM levels WHERE id = classes.level) AS level_name FROM classes WHERE branch = ".$_SESSION['branch_no']." ORDER BY is_group,level");
+				$run = $conn->query("SELECT *,(SELECT count(*) FROM enrolls WHERE enrolls.class = classes.id) AS no_student,(SELECT name FROM tutors WHERE tutors.id = classes.tutor) AS tutor_name,(SELECT name FROM levels WHERE id = classes.level) AS level_name FROM classes WHERE active = 1 AND branch = ".$_SESSION['branch_no']." ORDER BY is_group,level");
 				while ( $row = $run->fetch_assoc() ){
 					$i++;
 			?>
@@ -32,12 +32,35 @@
 					<td><?php echo $row['level_name'] ?></td>
 					<td><?php echo $row['tutor_name'] ?></td>
 					<td><?php echo $row['no_student'] ?></td>
-					<td>Thursday, 8:00pm - 10:00pm [p]</td>
+					<td><?php 
+					switch ($row['day']) {
+						case 0:
+							echo 'Sunday';
+							break;
+						case 1:
+							echo 'Monday';
+							break;
+						case 2:
+							echo 'Tuesday';
+							break;
+						case 3:
+							echo 'Wednesday';
+							break;
+						case 4:
+							echo 'Thursday';
+							break;
+						case 5:
+							echo 'Friday';
+							break;
+						case 6:
+							echo 'Saturday';
+							break;
+					} ?>, <?php echo $row['start_on'] ?> - <?php echo $row['end_on'] ?></td>
 					<td width="150px">
 						<a title="Enroll student" href="?m=enroll-student" class="btn hastooltip btn-primary text-white"><i class="fas fa-book"></i></a>
 						<div class="btn-group">
 							<button title="View" class="btn hastooltip btn-primary" data-toggle="modal" data-target="#student-detail"><i class="fas fa-eye"></i></button>
-							<button title="Remove class" class="btn hastooltip btn-danger" data-toggle="modal" data-target="#modal-remove-class"><i class="fas fa-trash-alt"></i></button>
+							<button title="Remove class" class="btn hastooltip btn-danger" data-toggle="modal" data-class-id="<?php echo($row['id']) ?>" data-target="#modal-delete-class"><i class="fas fa-trash-alt"></i></button>
 						</div>
 					</td>
 				</tr>
@@ -48,7 +71,7 @@
 </main>
 
 
-		<div class="modal fade" id="modal-remove-class">
+		<div class="modal fade" id="modal-delete-class">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -59,12 +82,21 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<p>One fine body&hellip;</p>
+						<p>Are you sure to delete this class?</p>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<a id="delete-link" class="btn text-white btn-danger">Confirm deletion</a>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
+
+
+<script type="text/javascript">
+	$('#modal-delete-class').on('show.bs.modal',function(event){
+		var btn = $(event.relatedTarget);
+		var classID = btn.data('class-id')
+		$('#delete-link').attr('href','controller-delete-class.php?id='+classID)
+	})
+</script>

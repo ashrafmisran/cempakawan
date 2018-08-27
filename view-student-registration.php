@@ -36,7 +36,7 @@
 				$sql = "SELECT *, 
 						(SELECT (sum(transactions.debit)-sum(transactions.credit)) FROM transactions WHERE account = 11 AND transactions.subaccount = students.id AND type = 'Student' ) AS debt,
 						(SELECT (sum(transactions.credit)-sum(transactions.debit)) FROM transactions WHERE account = 6 AND transactions.subaccount = students.id AND type = 'Student' ) AS prepayment
-						FROM students WHERE branch = ".$_SESSION['branch_no']." ORDER BY id DESC";
+						FROM students WHERE active = 1 AND branch = ".$_SESSION['branch_no']." ORDER BY id DESC";
 				$run = $conn->query($sql);
 				$i = 0;
 				while ( $row = $run->fetch_assoc() ){

@@ -7,9 +7,10 @@ $classes = array();
 
 
 
-$id = $_GET['id'];
+$tutor = $_GET['tutor'];
+$class = $_GET['class'];
 
-$sql = "SELECT * FROM classes WHERE tutor = $id AND branch = ".$_SESSION['branch_no'];
+$sql = "SELECT * FROM attendances_tutors WHERE tutor = $tutor AND class = $class AND timeout <> '0000-00-00 00:00:00' ORDER BY id DESC LIMIT 1";
 $run = $conn->query($sql);
 ;
 

@@ -7,7 +7,7 @@
 			</form>
 		</div>
 	</div>
-	<table class="table datatable">
+	<!-- <table class="table datatable">
 		<thead>
 			<tr>
 				<th>#</th>
@@ -34,5 +34,5 @@
 				</tr>
 			<?php } ?>
 		</tbody>
-	</table>
+	</table> -->
 </main>

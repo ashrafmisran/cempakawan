@@ -3,10 +3,10 @@
 	$id = $_GET['id'];
 	$time = date("Y-m-d H:i:s");
 
-	$sql = "UPDATE students SET quit_on = '$time', active = 0 WHERE id = $id";
+	$sql = "UPDATE classes SET active = 0 WHERE id = $id";
 	$run = $conn->query($sql);
 
-	$sql2 = "UPDATE enrolls SET quit_on = '$time', active = 0 WHERE student = $id";	
+	$sql2 = "UPDATE enrolls SET quit_on = '$time', active = 0 WHERE class = $id";	
 	$run2 = $conn->query($sql2);
 
 

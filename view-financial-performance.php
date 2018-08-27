@@ -94,7 +94,7 @@
 				  data: {
 				    labels: dates,
 				    datasets: [{
-				          label: 'Total pstudents',
+				          label: 'Total students',
 				          data: totalstudents,
 				          borderColor: 'blue',
 				          backgroundColor: 'rgba(0,0,0,0)',
