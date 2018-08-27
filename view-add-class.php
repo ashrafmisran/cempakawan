@@ -59,13 +59,13 @@
 					</div>
 					<div class="col-md-9">
 						<select class="form-control" type="select" name="day" required>
-							<option>Sunday</option>
-							<option>Monday</option>
-							<option>Tuesday</option>
-							<option>Wednesday</option>
-							<option>Thursday</option>
-							<option>Friday</option>
-							<option>Saturday</option>
+							<option value="0">Sunday</option>
+							<option value="1">Monday</option>
+							<option value="2">Tuesday</option>
+							<option value="3">Wednesday</option>
+							<option value="4">Thursday</option>
+							<option value="5">Friday</option>
+							<option value="6">Saturday</option>
 						</select>
 					</div>
 				</div>
